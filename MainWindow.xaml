@@ -1,0 +1,44 @@
+﻿<Window x:Class="WPF2048.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF2048"
+        mc:Ignorable="d"
+        Title="2048" Height="600" Width="800">
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBlock FontSize="20" Text="Размер поля (от 3 до 8) : "/>
+            <TextBox Name ="size" IsTabStop="False" FontSize="20" Text="4"/>
+        </StackPanel>
+        <Button DockPanel.Dock="Top" HorizontalAlignment="Center" 
+                Click="Start" KeyDown="Move"  
+                Background ="Wheat"  FontSize="20" Content=" Начать новую игру! ">
+            <Button.ToolTip>
+                <TextBlock Width="300" TextWrapping="Wrap" Foreground="Black">
+                    Правила:
+                    <LineBreak/>
+                    1. В каждом раунде появляется плитка номинала «2» или «4».
+                    <LineBreak/>
+                    2. Используйте клавиши со стрелками, чтобы перемещать плитки. 
+                    Если при сбрасывании две плитки одного номинала «налетают» одна на другую, 
+                    они превращаются в одну, а её номинал равен сумме соединившихся плиток.
+                    <LineBreak/>
+                    3. За один ход плитки могут увеличить номинал один раз. 
+                    Другими словами, если подряд расположены «2», «2» и «4», 
+                    то за ход можно объединить только «2» и «2», 
+                    а получившуюся «4» с блоком такого же значения – во время следующего хода.
+                    <LineBreak/>
+                    4. Если при нажатии кнопки местоположение плиток или их номинал не изменится,
+                    ход не совершается.
+                    <LineBreak/>
+                    5. Игра заканчивается победой, если на поле появляется плитка «2048».
+                    <LineBreak/>
+                    6. Игра заканчивается поражением, если после очередного хода невозможно совершить действие.               
+                </TextBlock>
+            </Button.ToolTip>
+        </Button>
+        <UniformGrid Name ="gameBoard">
+        </UniformGrid>
+    </DockPanel>
+</Window>
